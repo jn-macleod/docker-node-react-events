@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "686dea17-a047-47f8-96bc-0f688007f4cb",
+		"name": "tt-events",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OPTIONS",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}"
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "GET /events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}/events",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_KEY}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "price",
+									"value": "12.89",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "Harry Potter 92",
+									"type": "default"
+								},
+								{
+									"key": "productImage",
+									"type": "file",
+									"src": "/Users/jnmdev/Desktop/cc0-1.png"
+								},
+								{
+									"key": "token",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{API_PORT}}/events",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /events/{eventId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}/events/1asd3asdfasd",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"events",
+								"1asd3asdfasd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /events/eventtId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_KEY}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mrs. Frisbee and the Rats of Nimh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{API_PORT}}/events/6206c85be4ed278f926318e9",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"events",
+								"6206c85be4ed278f926318e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /events/{eventId}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_KEY}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}/events/6204c018a68d5beb4fb13671",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"events",
+								"6204c018a68d5beb4fb13671"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
