@@ -5,13 +5,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const eventRoutes = require('./api/routes/events');
+const userRoutes = require('./api/routes/user');
 
-const connectionString = process.env.MONGO_URL || 'mongodb://localhost:27017';
-console.log(connectionString);
+const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017';
 
-// mongoose.connect(connectionString).catch((err) => {
-//   console.error('Connection error', err.message);
-// });
+mongoose.connect(mongoURL + '/eventsDB');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,6 +30,7 @@ app.use((req, res, next) => {
 
 // Routes which should handle requests
 app.use('/events', eventRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');

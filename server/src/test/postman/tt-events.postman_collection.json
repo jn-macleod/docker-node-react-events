@@ -56,11 +56,124 @@
 			]
 		},
 		{
+			"name": "User",
+			"item": [
+				{
+					"name": "POST /signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"asd-2456-faserqwe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{API_PORT}}/user/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /user/userId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{API_PORT}}/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"asd-2456-faserqwe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{API_PORT}}/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Events",
 			"item": [
 				{
 					"name": "GET /events",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_KEY}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -92,30 +205,8 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "price",
-									"value": "12.89",
-									"type": "default"
-								},
-								{
-									"key": "name",
-									"value": "Harry Potter 92",
-									"type": "default"
-								},
-								{
-									"key": "productImage",
-									"type": "file",
-									"src": "/Users/jnmdev/Desktop/cc0-1.png"
-								},
-								{
-									"key": "token",
-									"value": "",
-									"type": "default",
-									"disabled": true
-								}
-							],
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User Event\",\n    \"description\": \"User\",\n    \"dates\": {\n        \"start\": \"2022-07-17\",\n        \"end\": \"2022-07-31\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -138,17 +229,27 @@
 				{
 					"name": "GET /events/{eventId}",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_KEY}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:{{API_PORT}}/events/1asd3asdfasd",
+							"raw": "localhost:{{API_PORT}}/events/6209850024b19449ebf1f1c0",
 							"host": [
 								"localhost"
 							],
 							"port": "{{API_PORT}}",
 							"path": [
 								"events",
-								"1asd3asdfasd"
+								"6209850024b19449ebf1f1c0"
 							]
 						}
 					},
