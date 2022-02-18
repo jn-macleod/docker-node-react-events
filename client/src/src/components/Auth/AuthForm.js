@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch } from 'react-redux';
 
@@ -14,10 +14,12 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsloading] = useState(false);
 
+  useEffect(() => {});
+
   const switchAuthModeHandler = () => {
-    return () => {
-      setIsLogin((prevState) => !prevState);
-    };
+    setIsLogin((prevState) => {
+      return !prevState;
+    });
   };
 
   const submitHandler = (event) => {
@@ -28,15 +30,10 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    const authData = dispatch(
-      authenticate(enteredEmail, enteredPassword, { isLogin: isLogin })
-    );
-    setIsloading(false);
+    dispatch(authenticate(enteredEmail, enteredPassword, { isLogin: isLogin }));
 
-    if (authData) {
-      history.replace('/');
-    }
-    console.log(authData);
+    setIsloading(false);
+    // history.replace('/');
   };
 
   return (

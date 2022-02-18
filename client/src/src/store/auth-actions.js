@@ -37,20 +37,28 @@ export const authenticate = (email, password, action) => {
       });
 
       if (!response.ok) {
-        throw new Error('Authentication failed!');
+        return response.text().then((text) => {
+          throw new Error(text);
+        });
       }
 
       const data = await response.json();
-
       return data;
     };
 
     try {
+      dispatch(authActions.sendAuthRequest());
       const data = await sendAuthRequest();
-      dispatch(authActions.login({ token: data.token }));
+      if (data.type && data.type === 'error') {
+        throw new Error(data);
+      }
+      if (action.isLogin) {
+        dispatch(authActions.login({ token: data.token }));
+      }
     } catch (error) {
       console.log(error);
-      dispatch(authActions.logout());
+      alert(error.message);
+      dispatch(authActions.authResponseReceived());
     }
   };
 };

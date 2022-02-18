@@ -6,11 +6,19 @@ const initialToken = localStorage.getItem(tokenKeyName);
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
+    loading: 'idle',
     token: initialToken,
     isLoggedIn: false,
   },
   reducers: {
+    sendAuthRequest(state) {
+      state.loading = 'pending';
+    },
+    authResponseReceived(state) {
+      state.loading = 'idle';
+    },
     login(state, action) {
+      state.loading = 'idle';
       state.token = action.payload.token;
       localStorage.setItem(tokenKeyName, action.payload.token);
       state.isLoggedIn = true;
