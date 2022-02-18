@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch } from 'react-redux';
 
 import { authenticate } from '../../store/auth-actions';
@@ -7,7 +6,6 @@ import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -33,7 +31,6 @@ const AuthForm = () => {
     dispatch(authenticate(enteredEmail, enteredPassword, { isLogin: isLogin }));
 
     setIsloading(false);
-    // history.replace('/');
   };
 
   return (
