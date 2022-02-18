@@ -1,0 +1,14 @@
+.events-list {
+  list-style: none;
+  padding: 0;
+}
+
+.events-list__fallback {
+  color: white;
+  text-align: center;
+}
+
+.events-list_container {
+  max-height: 75vh;
+  overflow-y: scroll;
+}

@@ -1,0 +1,26 @@
+.event-date {
+  /* border-bottom: #dadce0 1px solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(218, 220, 224); */
+  background-color: #4b4b4b;
+  color: white;
+  width: 5rem;
+  padding: 0.5rem;
+}
+
+.event-date__month {
+  font-size: 0.75rem;
+}
+
+.event-date__year {
+  font-size: 0.75rem;
+}
+
+.event-date__day {
+  font-size: 0.75rem;
+}
+
+.event-date__date {
+  font-size: 0.75rem;
+}
