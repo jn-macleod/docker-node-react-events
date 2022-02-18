@@ -13,10 +13,10 @@ exports.events_get_all = (req, res, next) => {
         events: docs.map((doc) => {
           return {
             name: doc.name,
-            description: doc.price,
+            description: doc.description,
             dates: {
-              start: doc.dates.start ? doc.dates.start.toLocaleString() : '',
-              end: doc.dates.end ? doc.dates.end.toLocaleString() : '',
+              start: doc.dates.start ? doc.dates.start : '',
+              end: doc.dates.end ? doc.dates.end : '',
             },
             _id: doc._id,
             links: [
